@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Food Order System</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <link rel="icon" type="image/jpg" sizes="16x16" href="http://127.0.0.1:5500/food/logo2.jpg" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@200;300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <style>
+        div.a{
+            text-align: center;
+        }
+    </style>
+
+    <div >
+        <form th:action="@{/admin/logout}" method="post">
+            <input type="submit" class="btn1" value="Logout"/>
+        </form>
+
+    </div>
+
+    <div>
+        <div class="a">
+            <h1>ออเดอร์วันนี้</h1>
+            <h2>ออเดอร์ชำระเงินแล้ว</h2>
+        </div>
+        
+        <button class="btn6"><a  th:href ="@{/admin/order_today/neworeder}">ออเดอร์ใหม่</a></button>
+            &nbsp
+            <button class="btn7"><a  th:href ="@{/admin/order_today/takeorder}">ออเดอร์ที่รับ</a></button>
+            &nbsp
+            <button class="btn8"><a  th:href ="@{/admin/order_today/finishedcooking}">อาหารเสร็จสิ้น</a></button>
+            &nbsp
+            <button class="btn9"><a  th:href ="@{/admin/order_today/paymentcompleted}">ออเดอร์ที่ชำระเงินแล้ว</a></button>
+            &nbsp
+            <button class="btn10"><a  th:href ="@{/admin/order_today/nopayment}">ออเดอร์ที่ไม่ชำระเงิน</a></button>
+            <br>
+            <br>
+            <br>
+        <center>
+        <div class="btn5">
+            <br>
+            <th:block th:each="order: ${listOrderCustomer}">
+                <div class="col">
+                    <br>
+                
+                        Order Id : <b>[[${order.id}]]</b> 
+                     
+                    
+                    &nbsp
+                   
+                        <b>[[${order.memu}]]</b> 
+                   
+                    &nbsp
+                
+                        ขนาด : <b>[[${order.size}]]</b> 
+                    
+                    &nbsp
+                
+                        เครื่องเคียง : <b>[[${order.sidedish}]]</b> 
+                     
+                    &nbsp
+                    
+                        รายละเอียด : <b>[[${order.detail}]]</b> 
+                    &nbsp
+                    
+                        ราคา : <b>[[${order.orderPrice}]]</b> 
+                    
+                    &nbsp
+                    
+                        X <b>[[${order.quatity}]]</b> 
+                    
+                    &nbsp
+                    
+                        = <b>[[${order.subTotal}]]</b> 
+                    
+                    &nbsp
+                    <button class="btn0"><a  th:href ="@{'/admin/detailUser/order/' + ${order.id}}">รายละเอียด</a></button>
+                    <br>
+                    <br>
+                </div>
+                <br>
+
+
+                
+            </th:block>
+
+                       
+
+        </div>
+
+
+    </div>
+</center>
+    <button class="btn2"><a  th:href ="@{/admin/welcome}">Back</a></button>
+    <style>
+        body{
+            font-family: 'IBM Plex Sans Thai', sans-serif;
+            min-height: 100vh;
+            background-image: url("https://png.pngtree.com/background/20210709/original/pngtree-food-spicy-and-seductive-lobster-shellfish-chinese-meal-background-picture-image_912702.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            border: 2px solid rgb(170, 157, 145) ;
+        }
+        h1{
+            font-size: 40px;
+            color: rgb(255, 255, 255);
+        }
+        h2{
+            font-size: 30px;
+            color: rgb(255, 253, 253);
+        }
+        h3{
+            font-size: 15px;
+            color: rgb(0, 0, 0);
+        }
+        a{
+            color: rgb(126, 71, 9);
+        
+        }
+        .btn{
+            width: 1000px;
+            height: 70px;
+            border-radius: 0px;
+            border: none;
+            background-color: rgb(247, 230, 199);
+            color: rgb(252, 249, 249);
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: 'IBM Plex Sans Thai', sans-serif;
+            position: absolute;
+            top: 10rem;
+            left: 17%;
+        }
+        .btn0{
+            width: 100px;
+            height: 50px;
+            border-radius: 10px;
+            border: none;
+            background-color: rgb(194, 172, 159);
+            color: rgb(126, 71, 9);
+            font-size: 15px;
+            font-weight: bold;
+            
+            
+            
+        }
+        
+        .btn1{
+            width: 75px;
+            height: 33px;
+            border-radius: 10px;
+            border: none;
+            background-color: rgb(194, 172, 159);
+            color: rgb(126, 71, 9);
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            bottom: 0.5rem;
+            top: 20px;
+            right: 1.5% ;
+            
+        }
+        .btn2{
+            width: 75px;
+            height: 33px;
+            border-radius: 10px;
+            border: none;
+            background-color: rgb(194, 172, 159);
+            color: black;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            bottom: 0.5rem;
+            top: 20px;
+            left: 1.5%;
+            
+        }
+        .btn5{
+            
+            max-width: 1300px;
+            height: 700px;
+            background-color: rgba(167, 114, 72, 0.788);
+            align: center;
+            background-position: center;
+            height: 1000;
+            
+            
+        }
+        .btn6{
+            width: 255px;
+            height: 50px;
+            border-radius: 0px;
+            border: none;
+            background-color: rgba(228, 217, 217, 0.829);
+            color: rgb(126, 71, 9);
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            bottom: 0.5rem;
+            top: 200px;
+            left: 7%;
+            
+        }
+        .btn7{
+            width: 255px;
+            height: 50px;
+            border-radius: 0px;
+            border: none;
+            background-color: rgba(228, 217, 217, 0.829);
+            color: rgb(126, 71, 9);
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            bottom: 0.5rem;
+            top: 200px;
+            left: 24.25%;
+            
+        }
+        .btn8{
+            width: 255px;
+            height: 50px;
+            border-radius: 0px;
+            border: none;
+            background-color: rgba(228, 217, 217, 0.829);
+            color: rgb(126, 71, 9);
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            bottom: 0.5rem;
+            top: 200px;
+            left: 41.5%;
+            
+        }
+        .btn9{
+            width: 255px;
+            height: 50px;
+            border-radius: 0px;
+            border: none;
+            background-color: rgba(228, 217, 217, 0.829);
+            color: rgb(126, 71, 9);
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            bottom: 0.5rem;
+            top: 200px;
+            left: 58.75%;
+            
+        }
+        .btn10{
+            width: 255px;
+            height: 50px;
+            border-radius: 0px;
+            border: none;
+            background-color: rgba(228, 217, 217, 0.829);
+            color: rgb(255, 255, 255);
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            bottom: 0.5rem;
+            top: 200px;
+            left: 76%;
+            
+        }
+        .col{
+            color: rgb(255, 255, 255);
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 10px;
+            max-width: 1200px;
+         
+            margin: 0 auto;
+            
+            border: 2px solid white;
+          
+        }
+
+
+    
+    </style> 
+</body>
+</html>

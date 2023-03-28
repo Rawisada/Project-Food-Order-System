@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Food Order System</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <link rel="icon" type="image/jpg" sizes="16x16" href="http://127.0.0.1:5500/food/logo2.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@200;300;400&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <style>
+        div.a{
+            text-align: center;
+        }
+    </style>
+    <center>
+    
+        <div class = "a">
+            <div>
+                <br>
+                <h2>Welcome <br> 
+                    <b>[[${#request.userPrincipal.principal.fullName}]]</b> </h2>
+            </div>
+            <center>
+                <br>
+                <br>
+            <div class="btn5">
+                <!--div sec:authorize = "isAuthenticated()">
+                Weclome <span sec:authentication = "firstname">Username</span>
+
+                </div-->
+                <br>
+                <br>
+                <button class="btn3"><a th:href = "@{/admin/list_users}"> รายชื่อสมาชิก </a></button>
+                <br>
+                <br>
+                
+                <button class="btn3"><a th:href = "@{/admin/restaurant}"> ร้านค้า </a></button>
+             
+                <br>
+                <br>
+                <button class="btn3"><a th:href = "@{/admin/order_today/neworeder}"> ออเดอร์วันนี้ </a></button>
+              
+                <br>
+                <br>
+                <button class="btn3"><a th:href = "@{/admin/sales/hidtory}"> ประวัติการขาย </a></button>
+           
+            
+            </div>
+        </center>
+
+            <div >
+                <form th:action="@{/admin/logout}" method="post">
+                    <input type="submit" class="btn1" value="Logout"/>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+    </center>
+    <style>
+        body{
+            font-family: 'IBM Plex Sans Thai', sans-serif;
+            min-height: 100vh;
+            background-image: url("https://png.pngtree.com/background/20210709/original/pngtree-food-spicy-and-seductive-lobster-shellfish-chinese-meal-background-picture-image_912702.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            border: 2px solid rgb(170, 157, 145) ;
+            
+        }
+        h2{
+            font-size: 40px;
+            text-align: center;
+            align :center;
+            color: rgb(201, 201, 201);
+            max-width: 700px;
+            margin: 0 auto;
+            border: 2px solid white;
+            
+            
+        }
+        a{
+            color: rgb(104, 52, 0);
+        
+        }
+        
+        .btn1{
+            width: 75px;
+            height: 33px;
+            border-radius: 10px;
+            border: none;
+            background-color: rgb(194, 172, 159);
+            color: rgb(126, 71, 9);
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            bottom: 0.5rem;
+            top: 20px;
+            right: 1.5% ;
+            
+        }
+        .btn2{
+            width: 75px;
+            height: 33px;
+            border-radius: 10px;
+            border: none;
+            background-color: rgb(194, 172, 159);
+            color: black;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            bottom: 0.5rem;
+            top: 20px;
+            left: 1.5%;
+            
+        }
+        .btn3{
+           
+            font-size: 25px;
+            margin: 0 auto;
+            width: 400px;
+            height: 70px;
+            border-radius: 0px;
+            border: none;
+            background-color: rgba(218, 182, 152, 0.842);
+            font-family: 'IBM Plex Sans Thai', sans-serif;
+            
+        }
+        .btn4{
+            font-size: 45px;
+            max-width: 1600px;
+            height: 170px;
+            
+            font-weight: bold;
+            
+            
+            
+        }
+        .btn5{
+            
+            max-width: 700px;
+            height: 450px;
+            
+            background-color: rgba(39, 21, 1, 0.788);
+            align: center;
+            background-position: center;
+            height: 1000;
+            
+            
+        }
+        
+    </style>
+
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+	<title>Food Order System</title>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	<link rel="icon" type="image/jpg" sizes="16x16" href="http://127.0.0.1:5500/food/logo2.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@200;300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+	<style>
+        div.a{
+            text-align: center;
+        }
+    </style>
+	<div >
+        <form th:action="@{/admin/logout}" method="post">
+            <input type="submit" class="btn1" value="Logout"/>
+        </form>
+
+    </div>
+	<div>
+		<div class="a">
+			<h1>Edit User</h1>
+		</div>
+		<center>
+			
+		<div class="btn5">
+			<br>
+			<form th:action="@{/admin/list_users/save}" th:object="${user}" 
+				method="post" style="max-width: 600px; margin: 0 auto;">
+				<input type="hidden" th:field="*{id}" />
+			<div class="m-3">
+				<div class="form-group row">
+					<div class="col-8">
+						<h3>E-mail</h3>
+						<input type="email" th:field="*{email}" class="form-control" required />
+					</div>
+				</div>
+			
+				<div class="form-group row">
+					<h3>Password</h3>
+					<div class="col-8">
+						<input type="password" th:field="*{password}" class="form-control" 
+						required length="6" maxlength="10"/>
+					</div>
+				</div>
+			
+				<div class="form-group row">
+					<h3>First Name</h3>
+				
+					<div class="col-8">
+						<input type="text" th:field="*{firstname}" class="form-control" 
+							required minlength="2" maxlength="20"/>
+					</div>
+				</div>
+			
+				<div class="form-group row">
+					<h3>Last Name</h3>
+					<div class="col-8">
+						<input type="text" th:field="*{lastname}" class="form-control" 
+							required minlength="2" maxlength="20" />
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<h3>Phone number</h3>
+					<div class="col-8">
+						<input type="text" th:field="*{phone_number}" class="form-control" 
+							required minlength="10" maxlength="10" />
+					</div>
+				</div>
+			
+				<div class="form-group row">
+					<h3>Roles</h3>
+					<div class="col-8">
+						<th:block th:each="role: ${listRoles}">
+						<input type="checkbox" th:field="*{roles}"
+						th:text="${role.name}"  th:value="${role.id}" class="m-2" />
+					</th:block>
+					</div>
+				</div>			
+			
+				<div>
+				<button type="submit" class="btn btn-primary">Update</button> 
+				</div>
+		</div>
+	</center>
+		</div>
+		</form>
+		<button class="btn2"><a th:href ="@{/admin/list_users}">Back</a></button>
+	</div>
+	<style>
+		body{
+			font-family: 'IBM Plex Sans Thai', sans-serif;
+            min-height: 100vh;
+            background-image: url("https://png.pngtree.com/background/20210709/original/pngtree-food-spicy-and-seductive-lobster-shellfish-chinese-meal-background-picture-image_912702.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            border: 2px solid rgb(170, 157, 145) ;
+		}
+		h1{
+			font-size: 40px;
+			color: rgb(255, 255, 255);
+		}
+		h3{
+			font-size: 15px;
+			color: rgb(0, 0, 0);
+		}
+		a{
+            color: rgb(126, 71, 9);
+        
+        }
+		.btn{
+			width: 90px;
+			height: 40px;
+			border-radius: 10px;
+			border: none;
+			background-color: rgb(22, 218, 68);
+			color: rgb(252, 249, 249);
+			font-size: 20px;
+			font-weight: bold;
+			cursor: pointer;
+			font-family: 'IBM Plex Sans Thai', sans-serif;
+			position: absolute;
+			top: 42rem;
+			right: 47%;
+		}
+		
+		.btn1{
+            width: 75px;
+            height: 33px;
+            border-radius: 10px;
+            border: none;
+            background-color: rgb(194, 172, 159);
+            color: rgb(126, 71, 9);
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            bottom: 0.5rem;
+            top: 20px;
+            right: 1.5% ;
+            
+        }
+        .btn2{
+            width: 75px;
+            height: 33px;
+            border-radius: 10px;
+            border: none;
+            background-color: rgb(194, 172, 159);
+            color: black;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            bottom: 0.5rem;
+            top: 20px;
+            left: 1.5%;
+            
+        }
+		.btn5{
+            
+            max-width: 600px;
+            height: 600px;
+            
+            background-color: rgba(167, 114, 72, 0.788);
+            align: center;
+            background-position: center;
+            height: 1000;
+            
+            
+        }
+		
+		
+	
+	
+	</style>
+</body>
+</html>

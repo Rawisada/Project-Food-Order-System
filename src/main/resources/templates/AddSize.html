@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Order System</title>
+    <link rel="icon" type="image/jpg" sizes="16x16" href="http://127.0.0.1:5500/food/logo2.jpg" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@200;300;400&display=swap" rel="stylesheet">
+</head>
+
+
+<body>
+    <style>
+        div.a{
+            text-align: center;
+        }
+    </style>
+    <div >
+        <form th:action="@{/admin/logout}" method="post">
+            <input type="submit" class="btn1" value="Logout"/>
+        </form>
+
+    </div>
+    <form th:action="@{/admin/process_size}" method="post" style="max-width: 600px; margin: 0 auto;" th:object="${size}">
+
+        <div  class = "a">
+            <h1>เพิ่มขนาดจาน</h1>
+        
+        </div>
+        <div class="btn5">
+        <!--กรอกข้อมูล-->  
+              
+
+                <div class="form-group1">
+                    <label class="col-4 col-form-label">ขนาด : </label>
+                    <input type="text" class="form-control" placeholder="ขนาดจาน" th:field = "*{name}" required>
+                </div>
+
+                <br>
+
+                <div class="form-group2">
+                    <label class="col-4 col-form-label">ราคา : </label>
+                    <input type="text" class="form-control" placeholder="ราคา" th:field = "*{price}" required
+                    minlength="1" maxlength="4">
+                </div>
+
+                <br>
+                
+                <button type = 'submit' class="btn btn -primary" id="create" onclick="wrong_pass_alert()"> 
+                    Submit
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                
+
+
+
+              
+            
+        </div>  
+
+    </form>
+    
+
+        <div>
+            <button class="btn2"><a  th:href ="@{/admin/size}">Back</a></button>
+        </div>
+
+   
+
+        <style>
+            body{
+                font-family: 'IBM Plex Sans Thai', sans-serif;
+                min-height: 100vh;
+                background-image: url("https://png.pngtree.com/background/20210709/original/pngtree-food-spicy-and-seductive-lobster-shellfish-chinese-meal-background-picture-image_912702.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+                border: 2px solid rgb(170, 157, 145) ;
+            }
+            h1{
+                font-size: 40px;
+                color: rgb(255, 255, 255);
+            }
+            h3{
+                font-size: 15px;
+                color: rgb(0, 0, 0);
+            }
+            a{
+                color: rgb(126, 71, 9);
+            
+            }
+            .btn{
+                width: 90px;
+                height: 40px;
+                border-radius: 10px;
+                border: none;
+                background-color: rgb(22, 218, 68);
+                color: rgb(252, 249, 249);
+                font-size: 18px;
+                font-weight: bold;
+                cursor: pointer;
+                font-family: 'IBM Plex Sans Thai', sans-serif;
+                position: absolute;
+                top: 26rem;
+                left: 47%;
+            }
+            
+            .btn1{
+                width: 75px;
+                height: 33px;
+                border-radius: 10px;
+                border: none;
+                background-color: rgb(194, 172, 159);
+                color: rgb(126, 71, 9);
+                font-size: 15px;
+                font-weight: bold;
+                cursor: pointer;
+                position: absolute;
+                bottom: 0.5rem;
+                top: 20px;
+                right: 1.5% ;
+                
+            }
+            .btn2{
+                width: 75px;
+                height: 33px;
+                border-radius: 10px;
+                border: none;
+                background-color: rgb(194, 172, 159);
+                color: black;
+                font-size: 15px;
+                font-weight: bold;
+                cursor: pointer;
+                position: absolute;
+                bottom: 0.5rem;
+                top: 20px;
+                left: 1.5%;
+                
+            }
+            .btn5{
+                
+                max-width: 600px;
+                height: 400px;
+                background-color: rgba(167, 114, 72, 0.788);
+                align: center;
+                background-position: center;
+                height: 1000;
+                
+                
+            }
+            .form-group1{
+                color: black;
+                font-size: 20px;
+                font-weight: bold;
+                cursor: pointer;
+                position: absolute;
+                bottom: 0.5rem;
+                top: 220px;
+                left: 42%;
+            }
+            .form-group2{
+                color: black;
+                font-size: 20px;
+                font-weight: bold;
+                cursor: pointer;
+                position: absolute;
+                bottom: 0.5rem;
+                top: 300px;
+                left: 42%;
+            }
+            
+           
+    
+    
+        
+        </style> 
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Food Order System</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <link rel="icon" type="image/jpg" sizes="16x16" href="http://127.0.0.1:5500/food/logo2.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@200;300;400&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    
+</head>
+<body>
+    <style>
+        div.a{
+            text-align: center;
+        }
+    </style>
+    <div>
+        <div >
+            <form th:action="@{/admin/logout}" method="post">
+                <input type="submit" class="btn1" value="Logout"/>
+            </form>
+
+        </div>
+
+        <div class =  "a">
+            <h1>
+                Welcome <b>[[${#request.userPrincipal.principal.fullName}]]</b>
+                <h2>List of All Users</h2>
+            </h1>
+        </div>
+
+        <br>
+        <br>
+        <center>
+        <div class="btn5">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Users ID</th>
+                        <th>E-mail</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Phone</th>
+                        <th>Roles</th>
+                        <th>action</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each = "user: ${listUsers}" align="center">
+                        <td th:text = "${user.id}">User ID</td>
+                        <td th:text = "${user.email}">Email</td>
+                        <td th:text = "${user.firstname}">First Name</td>
+                        <td th:text = "${user.lastname}">Last Name</td>
+                        <td th:text = "${user.phone_number}">Phone</td>
+                        <td th:text = "${user.roles}">Roles</td>
+					    <td><a th:href = "@{'/admin/list_users/edit/' + ${user.id}}">Edit</a> &nbsp <a th:href="@{'/admin/list_users/delete/' + ${user.id}}">Delete</a> 
+                            &nbsp <a th:href="@{'/admin/ban/user/' + ${user.id}}">Ban</a>&nbsp <a th:href="@{'/admin/purchasedByUser/' + ${user.id}}">Purchased</a></td>
+                    </tr>
+                </tbody>
+                
+            </table>
+            <br>
+        </div>
+        </center>
+
+        <button class="btn"><a  th:href ="@{/admin/list_users/ban}">List of Banned User</a></button>
+        <button class="btn2"><a  th:href ="@{/admin/welcome}">Back</a></button>
+
+          
+        
+    </div>
+    <style>
+        body{
+            font-family: 'IBM Plex Sans Thai', sans-serif;
+            min-height: 100vh;
+            background-image: url("https://png.pngtree.com/background/20210709/original/pngtree-food-spicy-and-seductive-lobster-shellfish-chinese-meal-background-picture-image_912702.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            border: 2px solid rgb(170, 157, 145) ;
+            
+        }
+        h1{
+            font-size: 40px;
+            text-align: center;
+            align :center;
+            
+            color: rgb(201, 201, 201);
+            
+            
+        }
+        h2{
+            font-size: 30px;
+            text-align: center;
+            align :center;
+            
+            color: rgb(201, 201, 201);
+            
+            
+        }
+        a{
+            color: rgb(126, 71, 9);
+        
+        }
+        table{
+            border-collapse: collapse;
+            width: 80%;
+        }
+        th, td{
+            padding: 15px;
+            text-align: center;
+            font-size: 20px;
+            border-bottom: 2.5px solid rgb(255, 255, 255);
+            
+        }
+        tr:hover{
+            background-color: rgb(236, 242, 250); 
+        }
+        .btn{
+        width: 200px;
+        height: 40px;
+        border-radius: 10px;
+        border: none;
+        background-color: rgb(201, 164, 117);
+        color: rgb(252, 249, 249);
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
+        font-family: 'IBM Plex Sans Thai', sans-serif;
+        position: absolute;
+        top: 12rem;
+        right: 43%;
+    }
+        .btn1{
+            width: 75px;
+            height: 33px;
+            border-radius: 10px;
+            border: none;
+            background-color: rgb(194, 172, 159);
+            color: rgb(126, 71, 9);
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            bottom: 0.5rem;
+            top: 20px;
+            right: 1.5% ;
+            
+        }
+        .btn2{
+            width: 75px;
+            height: 33px;
+            border-radius: 10px;
+            border: none;
+            background-color: rgb(194, 172, 159);
+            color: black;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            bottom: 0.5rem;
+            top: 20px;
+            left: 1.5%;
+            
+        }
+        .btn3{
+           
+            font-size: 25px;
+            margin: 0 auto;
+            width: 400px;
+            height: 70px;
+            border-radius: 40px;
+            border: none;
+            background-color: rgba(235, 189, 147, 0.842);
+            font-family: 'IBM Plex Sans Thai', sans-serif;
+            
+        }
+        .btn4{
+            font-size: 45px;
+            max-width: 1600px;
+            height: 170px;
+            
+            font-weight: bold;
+            
+            
+            
+        }
+        .btn5{
+            
+            max-width: 1470px;
+            max-height: 100%;
+            
+            
+            background-color: #c2936dc9;
+            align: center;
+            background-position: center;
+            height: 1000;
+            
+            
+        }
+        
+    </style>
+</body>
+</html>

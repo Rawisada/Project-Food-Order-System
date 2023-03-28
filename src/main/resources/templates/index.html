@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Food Order System</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+
+</head>
+<body>
+    <style>
+        div.a{
+            text-align: center;
+        }
+    </style>
+    <div class = "a">
+        <div>
+            <h2>Login</h2>
+            <p><a th:href = "@{/admin/login}"> Admin Login </p>
+            <p><a th:href = "@{/user/login}"> User Login </p>
+           
+            
+        </div>
+
+    </div>
+
+    <style>
+        body{
+            font-family: 'IBM Plex Sans Thai', sans-serif;
+            min-height: 100vh;
+            background-image: linear-gradient(120deg, #f1c40f, #e87324, #f1c40f);
+        }
+        h2{
+            font-size: 33px;
+            max-width: 500px;
+            margin: 0 auto;
+            border: 1px solid white;
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Order System</title>
+    <link rel="icon" type="image/jpg " sizes="16x16" href="http://127.0.0.1:5500/food/logo2.jpg" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    
+</head>
+
+<body>
+    <br>
+    <br>
+    <br>
+    <br>
+    <form th:action="@{/admin/login}" method="post" class="card" style="max-width: 600px; margin: 0 auto;" >
+        <div class="sign-in">Sign in</div>
+        <i id="logo" class="fas fa-user-circle"></i>
+
+        <div th:if="${param.error}" class="alert alert-error" style="text-align:center; font-size: 16px; color: red">
+            <p class="text-danger">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</p>
+        </div>
+        
+        <div th:if="${param.logout}" style="text-align:center; font-size: 16px; color: red">
+            <p class="text-warning">You have been logged out.</p>
+        </div>
+
+        <!--Username-->
+        <div class="login-from">
+            <i class="fas fa-user" id="logo-input"></i>
+            <input type="email" name="email" class="input" id="email" required autofocus>
+            <span data-placeholder="Email"></span>
+        </div>
+        <!--Password-->
+        <div class="login-from">
+            <i class="fas fa-lock" id="logo-input"></i>
+            <input type="password" class="input" name="password" id="password" required>
+            <span data-placeholder="Password"></span>
+        </div>
+       
+    
+        <input type="submit" class="btn-submit" value="login" onclick="wrong_pass_alert()">
+        
+
+        <!--css-->
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Roboto', sans-serif;
+            }
+
+            body {
+                font-family: 'IBM Plex Sans Thai', sans-serif;
+                min-height: 100vh;
+                background-image: url("https://png.pngtree.com/background/20210709/original/pngtree-food-spicy-and-seductive-lobster-shellfish-chinese-meal-background-picture-image_912702.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+                border: 2px solid rgb(170, 157, 145) ;
+            }
+
+            .card {
+                position: relative;
+                height: 580px;
+                width: 360px;
+                background-image: linear-gradient(90deg, #95a5a6, #bdc3c7);
+                border-radius: 10px;
+                /*set ความโค้ง */
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+                padding: 40px;
+                display: flex;
+                flex-direction: column;
+                /*จัดกึ่งกลาง*/
+                justify-content: center;
+                align-items: center;
+
+            }
+            /*ปุ่มsign-in บน*/
+            .sign-in {
+                position: absolute;
+                top: -40px;
+                left: 55px;
+                height: 80px;
+                width: 250px;
+                background: #333;
+                color: #fff;
+                font-size: 2rem;
+                text-transform: uppercase;
+                font-weight: 700;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 10px;
+            }
+
+            #logo {
+                font-size: 7rem;
+                color: #333;
+                margin-bottom: 40px;
+                transition: 5s;
+            }
+
+            .login-from {
+                position: relative;
+                height: 50px;
+                width: 100%;
+                background: #fff;
+                margin-bottom: 20px;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+            }
+
+            .login-from span::before {
+                content: attr(data-placeholder);
+                position: absolute;
+                top: 30%;
+                left: 30%;
+                color: #bdc3c7;
+                transition: .5s;
+                opacity: 1;
+            }
+
+            #logo-input {
+                margin: 0 20px;
+                padding-right: 20px;
+                font-size: 1.5rem;
+                border-right: 2px solid #bdc3c7;
+                color: #bdc3c7;
+            }
+
+            .input {
+                height: 35px;
+                width: 100%;
+                border: none;
+                font-size: 1.2rem;
+                outline: none;
+                background: transparent;
+                z-index: 1;
+                color: #d35400;
+            }
+
+            /*เข้าถึง a */
+            a {
+                text-decoration: none;
+                color: #d35400;
+            }
+
+            .btn-submit {
+                margin: 20px 0;
+                padding: 15px 0;
+                width: 100%;
+                border: none;
+                border-radius: 10px;
+                background-image: linear-gradient(120deg, #f1c40f, #d35400, #f1c40f);
+                background-size: 200%;
+                font-size: 1.5rem;
+                color: #fff;
+                transition: .5s;
+                cursor: pointer;
+            }
+
+            .btn-submit:hover {
+                background-position: right;
+            }
+
+            .focus + span::before {
+                opacity: 0;
+            }
+
+            .change-color {
+                color: #e67e22 !important;
+            }
+        </style>
+
+    </form>
+
+    <!-- import javascript-->
+    <!--พิมพ์แล้วให้ตัวspanหาย-->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".input").on("focus", function () {
+                $(this).addClass("focus");
+            });
+
+            $(".input").on("blur", function () {
+                if ($(this).val() == "")
+                    $(this).removeClass("focus");
+
+                if ($("#username").val() != "" && $("#password").val() != "")
+                    $("#logo").addClass("change-color");
+                else
+                    $("#logo").removeClass("change-color");
+
+
+            });
+
+        });
+    </script>
+
+    
+</body>
+
+</html>

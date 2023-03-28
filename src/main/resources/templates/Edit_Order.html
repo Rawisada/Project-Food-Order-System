@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head7>
+<head>
+	<title>Food Order System</title>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	<link rel="icon" type="image/jpg" sizes="16x16" href="http://127.0.0.1:5500/food/logo2.jpg" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@200;300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <style>
+        div.a{
+            text-align: center;
+        }
+    </style>
+	<div >
+        <form th:action="@{/user/logout}" method="post">
+            <input type="submit" class="btn1"  value="Logout"/>
+        </form>
+
+    </div>
+	<div class="a">
+		<h1>แก้ไขออเดอร์</h1>
+	</div>
+	<div>
+	
+	<center>
+	<div class="btn5">
+		<form th:action="@{'/user/process_order/save/' + ${menuid}}" th:object="${orderCustomer}" 
+			 style="max-width: 600px; margin: 0 auto;">
+			<input type="hidden" th:field="*{id}" />
+		<div>
+
+			
+            <div class="a">
+				<th:block th:each="menu: ${listmenu}">
+					<br>
+					<p>
+						<img th:src="@{${menu.MenuImagePath}}"  width="400"/>
+					</p>
+					
+					<h2>[[${menu.name}]]</h2> 
+					<h3>ราคาเริ่มต้น : [[${menu.price}]] บาท   &nbsp &nbsp &nbsp  &nbsp  รายละเอียด : [[${menu.detail}]]</h3>
+					
+	
+				</th:block>
+			</div>
+            
+
+            
+            <div class="form-group1">
+				<label class="col-4 col-form-label">ขนาด: </label>
+				<div class="col-8">
+					<th:block th:each="size: ${listSize}">
+					<input type="radio"  th:field = "*{size}"
+					 th:text="' '+ ${size.name} + ' '+ ${size.price} + ' บาท'"  th:value="${size.id}" class="m-2" required/>
+				</th:block>
+				</div>
+			</div>
+
+            
+
+            <br>
+            <div class="form-group2">
+				<label class="col-4 col-form-label">เครื่องเคียง: </label>
+				<div class="col-8">
+					<th:block th:each="sidedish: ${listSidedish}">
+					<input type="radio" th:field = "*{sidedish}"
+					 th:text="${sidedish.name} + ' '+ ${sidedish.price} + ' บาท'" th:value="${sidedish.id}" class="m-2" required/>
+				</th:block>
+				</div>
+			</div>
+            <br>
+            
+            
+		
+            <div class="form-group3">
+				<label class="col-4 col-form-label">รายละเอียด : &nbsp  </label>
+				<input type="text" th:field="*{detail}" class="form-control" 
+							required />
+				
+			</div>
+
+            <div class="form-group4">
+				<label class="col-4 col-form-label">จำนวน &nbsp &nbsp &nbsp  &nbsp : &nbsp  </label>
+				
+				<input type="text" th:field="*{quatity}" class="form-control" required />
+				
+			</div>
+
+           
+            
+            <br>	
+            <div>
+            <button type = 'submit' class="btn btn -primary" id="create" onclick="wrong_pass_alert()"> 
+                <div></div> 
+                Submit
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            </div>
+        </form>
+    </div>
+</center>
+		</div>
+		<button class="btn2" ><a  th:href ="@{/user/cart}">Back</a></button>
+	</div>
+	<style>
+		body{
+			font-family: 'IBM Plex Sans Thai', sans-serif;
+			min-height: 100vh;
+			background-image: url("https://png.pngtree.com/background/20210709/original/pngtree-food-spicy-and-seductive-lobster-shellfish-chinese-meal-background-picture-image_912702.jpg");
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center;
+			border: 2px solid rgb(170, 157, 145) ;
+		}
+		h1{
+			font-size: 40px;
+			color: rgb(255, 255, 255);
+		}
+		h2{
+			font-size: 30px;
+			color: rgb(15, 15, 15);
+		}
+		h3{
+			font-size: 22px;
+			color: rgb(15, 15, 15);;
+		}
+		a{
+			color: rgb(126, 71, 9);
+		
+		}
+		.btn{
+			width: 200px;
+			height: 50px;
+			border-radius: 10px;
+			border: none;
+			background-color: rgb(87, 233, 121);
+			color: rgb(252, 249, 249);
+			font-size: 18px;
+			font-weight: bold;
+			cursor: pointer;
+			font-family: 'IBM Plex Sans Thai', sans-serif;
+			position: absolute;
+			top: 55rem;
+			left: 43%;
+		}
+		
+		.btn1{
+			width: 75px;
+			height: 33px;
+			border-radius: 10px;
+			border: none;
+			background-color: rgb(194, 172, 159);
+			color: rgb(126, 71, 9);
+			font-size: 15px;
+			font-weight: bold;
+			cursor: pointer;
+			position: absolute;
+			bottom: 0.5rem;
+			top: 20px;
+			right: 1.5% ;
+			
+		}
+		.btn2{
+			width: 75px;
+			height: 33px;
+			border-radius: 10px;
+			border: none;
+			background-color: rgb(194, 172, 159);
+			color: black;
+			font-size: 15px;
+			font-weight: bold;
+			cursor: pointer;
+			position: absolute;
+			bottom: 0.5rem;
+			top: 20px;
+			left: 1.5%;
+			
+		}
+		.btn5{
+			
+			max-width: 1000px;
+			height: 830px;
+			background-color: rgba(167, 114, 72, 0.788);
+			align: center;
+			
+			height: 1000;
+			
+			
+		}
+		.form-group1{
+			color: rgb(255, 255, 255);
+			font-size: 20px;
+			font-weight: bold;
+			
+		}
+		.form-group2{
+			color: rgb(255, 255, 255);
+			font-size: 20px;
+			font-weight: bold;
+			
+		}
+		.form-group3{
+			color: rgb(255, 255, 255);
+			font-size: 20px;
+			font-weight: bold;
+			cursor: pointer;
+			position: absolute;
+			bottom: 0.5rem;
+			top: 780px;
+			left: 42%;
+		}
+		.form-group4{
+			color: rgb(255, 255, 255);
+			font-size: 20px;
+			font-weight: bold;
+			cursor: pointer;
+			position: absolute;
+			bottom: 0.5rem;
+			top: 820px;
+			left: 42%;
+		}
+	   
+
+
+	
+	</style> 
+</body>
+</html>

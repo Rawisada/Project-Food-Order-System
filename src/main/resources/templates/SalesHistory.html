@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Order System</title>
+    <link rel="icon" type="image/jpg" sizes="16x16" href="http://127.0.0.1:5500/food/logo2.jpg" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@200;300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <style>
+        div.a{
+            text-align: center;
+        }
+    </style>
+    <div >
+        <form th:action="@{/admin/logout}" method="post">
+            <input type="submit" class="btn1" value="Logout"/>
+        </form>
+
+    </div>
+    
+    
+    
+    <form action="/admin/sales/hidtory/process">
+        <br>
+        <br>
+        <br>
+        <br>
+        <center>
+        <div class="btn5">
+            <br>
+            <div class="a">
+                <h1>ประวัติการขาย</h1>
+            </div>
+            <div class="form">
+                <label for="date" class="col">วันที่ :</label>
+                    <input type="date" class="form-control" id="date" name="date" placeholder="วันที่">
+            </div>
+        </div>
+        <center>
+   
+    
+
+    <!--div>
+        <label class="col-sm-4 col-form-label">วันที่ :</label>
+        <input  type="number" name="day"placeholder="วันที่" required min="1" max="31"/>
+    
+    &nbsp
+   
+        <label class="col-sm-4 col-form-label">เดือน :</label>
+        <input  type="number" class="form-control" id="month" name="month" placeholder="เดือน" required min="1" max="12"/>
+    
+    &nbsp
+    
+        <label class="col-sm-4 col-form-label">ปี :</label>
+        <input  type="number" name="yaer" placeholder="ปี" required min="2020" />
+    &nbsp
+        
+    </div-->
+    <button type = 'submit' class="btn">ยืนยัน</a></button>
+    </form>
+   
+
+
+    <button class="btn2"><a  th:href ="@{/admin/welcome}">back</a></button>
+    <style>
+        body{
+            font-family: 'IBM Plex Sans Thai', sans-serif;
+            min-height: 100vh;
+            background-image: url("https://png.pngtree.com/background/20210709/original/pngtree-food-spicy-and-seductive-lobster-shellfish-chinese-meal-background-picture-image_912702.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            border: 2px solid rgb(170, 157, 145) ;
+        }
+        h1{
+			font-size: 40px;
+			color: rgb(255, 255, 255);
+           
+		}
+        a{
+            color: rgb(126, 71, 9);
+        
+        }
+        .btn{
+            width: 90px;
+            height: 40px;
+            border-radius: 10px;
+            border: none;
+            background-color: rgb(22, 218, 68);
+            color: rgb(252, 249, 249);
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: 'IBM Plex Sans Thai', sans-serif;
+            position: absolute;
+            top: 23rem;
+            right: 47%;
+        }
+        
+        .btn1{
+            width: 75px;
+            height: 33px;
+            border-radius: 10px;
+            border: none;
+            background-color: rgb(194, 172, 159);
+            color: rgb(126, 71, 9);
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            bottom: 0.5rem;
+            top: 20px;
+            right: 1.5% ;
+            
+        }
+        .btn2{
+            width: 75px;
+            height: 33px;
+            border-radius: 10px;
+            border: none;
+            background-color: rgb(194, 172, 159);
+            color: black;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            bottom: 0.5rem;
+            top: 20px;
+            left: 1.5%;
+            
+        }
+        .btn5{
+            
+            max-width: 500px;
+            height: 400px;
+            background-color: rgba(167, 114, 72, 0.788);
+            align: center;
+            background-position: center;
+      
+            
+            
+            
+        }
+        .col{
+            font-size: 20px;
+        }
+        .form{
+            position: absolute;
+            top: 260px;
+            left: 44.6%;
+        }
+        
+    </style>
+
+</body>
+
+</html>
